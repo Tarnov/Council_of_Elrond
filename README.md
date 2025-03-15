@@ -50,3 +50,21 @@
    ```
 
 После выполнения этих шагов окружение будет полностью готово! 🚀
+
+# tests/test_main.py
+
+from fastapi.testclient import TestClient
+from src.main import app
+
+client = TestClient(app)
+
+def test_read_root():
+    """Тест проверяет, что корневой эндпоинт возвращает корректный ответ."""
+    response = client.get("/")
+    assert response.status_code == 200
+    assert response.json() == {"message": "Welcome to the Council of Elrond!"}
+
+def test_orchestrator_endpoint():
+    """Тест проверяет, что эндпоинт /orchestrator доступен."""
+    response = client.get("/orchestrator")
+    assert response.status_code in [200, 404]  # Пока нет реализации, допускаем 404

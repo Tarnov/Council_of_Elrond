@@ -2,3 +2,6 @@ fastapi
 pydantic
 uvicorn
 loguru
+pytest
+httpx
+python-dotenv

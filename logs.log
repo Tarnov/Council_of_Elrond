@@ -1,0 +1,4 @@
+2025-03-15 11:23:15.461 | INFO     | src.logger:<module>:4 - Логирование запущено!
+2025-03-15 11:24:32.383 | INFO     | src.logger:<module>:4 - Логирование запущено!
+2025-03-15 11:24:59.984 | INFO     | src.logger:<module>:4 - Логирование запущено!
+2025-03-15 11:25:00.023 | INFO     | src.main:read_root:36 - Root endpoint accessed
