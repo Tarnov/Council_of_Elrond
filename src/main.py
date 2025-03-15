@@ -7,6 +7,7 @@ from starlette.responses import JSONResponse
 from src.logger import logger
 from src.orchestrator import router
 from src.config import config
+from src.ai import ai_engine  # Импортируем AIEngine
 
 class ExceptionHandlerMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):
@@ -35,6 +36,13 @@ app.include_router(router, prefix='/orchestrator')
 def read_root():
     logger.info("Root endpoint accessed")
     return {'message': 'Welcome to the Council of Elrond!'}
+
+@app.post("/generate")  # Добавляем новый эндпоинт
+def generate_text(request: PromptRequest):
+    response = ai_engine.generate(request.prompt)
+    if not response:
+        raise HTTPException(status_code=500, detail="Ошибка генерации ответа.")
+    return {"response": response}
 
 if __name__ == '__main__':
     logger.info(f"Starting {config.APP_NAME} on {config.HOST}:{config.PORT} (Debug: {config.DEBUG})")

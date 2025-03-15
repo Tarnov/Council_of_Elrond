@@ -19,5 +19,14 @@ class Config:
     # Логирование
     LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
 
+    # Настройки режима работы AI
+    MODE = os.getenv("AI_MODE", "hybrid")  # Возможные значения: "online", "offline", "hybrid"
+
+    # OpenAI API
+    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
+
+    # Локальная модель
+    LOCAL_MODEL_PATH = os.getenv("LOCAL_MODEL_PATH", "models/gpt4all-model.bin")
+
 # Экземпляр конфигурации, который можно импортировать в других модулях
 config = Config()
